@@ -45,7 +45,7 @@ public class ParentTest {
 		WebElement campoBusqueda = driver.findElement(By.name("q"));
 		campoBusqueda.sendKeys(movieName);
 		//encontrar el boton de busqueda id="navbar-submit-button
-		WebElement botonBusqueda = driver.findElement(By.id("navbar-submit-button"));
+		WebElement botonBusqueda = driver.findElement(By.cssSelector("#suggestion-search-button"));
 		botonBusqueda.click();
 	}
 	//Econtrar el campo busqueda
@@ -61,13 +61,22 @@ public class ParentTest {
 	}
 	
 	protected void playTrailer() {
-		// TODO Auto-generated method stub
-		
+		// .slate_button.prevent-ad-overlay.video-modal
+		WebElement playbutton = driver.findElement(By.cssSelector(".slate_button.prevent-ad-overlay.video-modal"));
+		playbutton.click();
 	}
 
-	protected void validateCorrectMovie() {
-		// TODO Auto-generated method stub
-		
+	protected void validateCorrectMovie(String nombre, String anio) {
+		WebElement titleMovie = driver.findElement(By.cssSelector(".title_wrapper h1"));
+		if (titleMovie.getText().contains(nombre)){
+			System.out.println("El nombre de la pelicula es el correcto");
+		}
+
+		WebElement anioMovie = driver.findElement(By.cssSelector("#titleYear a"));
+		if (anioMovie.getText().contains(anio)){
+			System.out.println("El anio de la pelicula es el correcto");
+		}
+
 	}
 
 	protected void selectMovie(String movieName, String movieYear) {
@@ -75,9 +84,7 @@ public class ParentTest {
 		String xpathResultado = "//td[contains(., '" + movieName + " (" + movieYear+ ")')]/a";
 		WebElement peliculaCorrecta = driver.findElement(By.xpath(xpathResultado));
 		peliculaCorrecta.click();
-
-		// TODO Auto-generated method stub
-		
+		System.out.println("Si accedio a la pelicula correcta");
 	}
 	
 	protected void validateMovieStars() {

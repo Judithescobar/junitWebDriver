@@ -14,7 +14,11 @@ public class SinatraSongsParameterExample extends SinatraSongBaseTest {
 	public void testSinatraLogin(String browser, String url,
 			String user, String password) {
 		setUp(browser, url);
+		verificarPaginaHome();
+        clickLogin();
+		verificarPaginaLogin();
 		logIntoSinatra(user, password);
-		validateUserLogged(user);
+//		validateUserLogged(user);
+		validateUserLogged();
 	}
 }

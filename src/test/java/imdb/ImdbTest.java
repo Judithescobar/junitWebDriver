@@ -21,7 +21,7 @@ public class ImdbTest extends ParentTest{
 		validateMovieExists("The Avengers");
 		selectMovie("The Avengers", "2012");
 		Thread.sleep(5000);
-		validateCorrectMovie();
+		validateCorrectMovie("The Avengers", "2012");
 		playTrailer();
 	}
 
@@ -32,7 +32,7 @@ public class ImdbTest extends ParentTest{
 		searchMovie("The Avengers");
 		validateMovieExists("The Avengers");
 		selectMovie("The Avengers", "2012");
-		validateCorrectMovie();
+		validateCorrectMovie("The Avengers", "2012");
 		validateMovieStars();
 	}
 
